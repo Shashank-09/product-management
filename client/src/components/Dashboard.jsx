@@ -2,11 +2,15 @@ import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import AddProduct from './AddProductModal';
 import EditProductModal from './EditProductModal'; 
+import { useNavigate } from 'react-router-dom';
+
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [editProduct, setEditProduct] = useState(null); 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); 
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     fetch('http://localhost:3000/api/products')
@@ -45,6 +49,10 @@ const Dashboard = () => {
     setIsEditModalOpen(true); 
   };
 
+  const handleView = (id) => {
+    navigate(`/products/${id}`); // Navigate to the product details page
+  }
+
   return (
     <>
     <div className="container mx-auto p-4">
@@ -59,7 +67,7 @@ const Dashboard = () => {
             product={product}
             onDelete={() => handleDelete(product._id)}
             onEdit={() => handleEditClick(product)} 
-            onView={() => console.log('View', product)}
+            onView={() =>handleView(product._id)} 
           />
         ))}
       </div>
