@@ -67,70 +67,71 @@ const AddProductModal = ({ onProductAdded }) => {
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg w-1/3">
-            <h2 className="text-xl font-bold mb-4">Add Product</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-2">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full border px-4 py-2 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-2">Price</label>
-                <input
-                  type="number"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleChange}
-                  className="w-full border px-4 py-2 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-2">Description</label>
-                <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  className="w-full border px-4 py-2 rounded"
-                  required
-                ></textarea>
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 font-medium mb-2">Image</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="w-full border px-4 py-2 rounded"
-                />
-              </div>
-              <div className="flex justify-end">
-                <button
-                  type="button"
-                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-                >
-                  Add
-                </button>
-              </div>
-            </form>
-          </div>
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-lg mx-4 sm:w-3/4 md:w-1/2 lg:w-1/3">
+      <h2 className="text-xl font-bold mb-4 text-center">Add Product</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2">Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full border px-4 py-2 rounded"
+            required
+          />
         </div>
-      )}
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2">Price</label>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            className="w-full border px-4 py-2 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2">Description</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            className="w-full border px-4 py-2 rounded"
+            required
+          ></textarea>
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2">Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="w-full border px-4 py-2 rounded"
+          />
+        </div>
+        <div className="flex justify-end">
+          <button
+            type="button"
+            className="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2"
+            onClick={() => setIsOpen(false)}
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
      <ToastContainer />
     </>
   );
