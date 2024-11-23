@@ -29,7 +29,7 @@ const ProductDetails = () => {
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full sm:w-1/3 object-cover rounded"
+          className="w-full sm:w-1/3 object-cover rounded-xl"
         />
         <div className="flex-1">
           <p className="mb-2">
