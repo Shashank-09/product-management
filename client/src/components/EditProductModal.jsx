@@ -68,69 +68,70 @@ const EditProductModal = ({ product, onClose, onProductUpdated }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-lg w-1/3">
-        <h2 className="text-xl font-bold mb-4">Edit Product</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full border px-4 py-2 rounded"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2">Price</label>
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              className="w-full border px-4 py-2 rounded"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2">Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="w-full border px-4 py-2 rounded"
-              required
-            ></textarea>
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2">Image</label>
-            <input
-              type="file"
-              name="image"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="w-full border px-4 py-2 rounded"
-            />
-          </div>
-          <div className="flex justify-end">
-            <button
-              type="button"
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2"
-              onClick={onClose}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-            >
-              Save
-            </button>
-          </div>
-        </form>
+  <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-lg mx-4 sm:w-3/4 md:w-1/2 lg:w-1/3">
+    <h2 className="text-xl font-bold mb-4 text-center">Edit Product</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2">Name</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full border px-4 py-2 rounded"
+          required
+        />
       </div>
-    </div>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2">Price</label>
+        <input
+          type="number"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+          className="w-full border px-4 py-2 rounded"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2">Description</label>
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          className="w-full border px-4 py-2 rounded"
+          required
+        ></textarea>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2">Image</label>
+        <input
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="w-full border px-4 py-2 rounded"
+        />
+      </div>
+      <div className="flex justify-end">
+        <button
+          type="button"
+          className="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2"
+          onClick={onClose}
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
   );
 };
 
