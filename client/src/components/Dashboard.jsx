@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import AddProduct from './AddProductModal';
 import EditProductModal from './EditProductModal'; 
-import { useNavigate } from 'react-router-dom';
+import Cart from './Cart';
 
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [editProduct, setEditProduct] = useState(null); 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); 
-  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -49,25 +48,22 @@ const Dashboard = () => {
     setIsEditModalOpen(true); 
   };
 
-  const handleView = (id) => {
-    navigate(`/products/${id}`); // Navigate to the product details page
-  }
-
+  
   return (
     <>
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Product Dashboard</h1>
-      <div className="mb-4">
+      <h1 className="text-2xl  font-bold mb-4">Product Dashboard</h1>
+      <div className="mb-4 flex gap-2">
         <AddProduct onProductAdded={handleProductAdded} />
+        <Cart />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductCard
             key={product._id}
             product={product}
             onDelete={() => handleDelete(product._id)}
             onEdit={() => handleEditClick(product)} 
-            onView={() =>handleView(product._id)} 
           />
         ))}
       </div>

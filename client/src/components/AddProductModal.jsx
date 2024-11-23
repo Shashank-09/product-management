@@ -9,6 +9,7 @@ const AddProductModal = ({ onProductAdded }) => {
     price: '',
     description: '',
   });
+  
   const [imageFile, setImageFile] = useState(null);
 
   const handleChange = (e) => {
