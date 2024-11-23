@@ -33,7 +33,7 @@ const ProductDetails = () => {
         />
         <div className="flex-1">
           <p className="mb-2">
-            <strong>Price:</strong> ${product.price}
+            <strong>Price:</strong>₹{product.price}
           </p>
           <p className="mb-4">
             <strong>Description:</strong> {product.description}
