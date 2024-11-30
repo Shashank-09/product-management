@@ -7,6 +7,8 @@ const {
     deleteProduct,
     upload
 } = require('../controllers/productController')
+const {checkAuth} = require('../middleware/auth')
+
 
 const router = express.Router();
 

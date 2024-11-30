@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/slices/cartSlice';
 
 const ProductDetails = () => {
+   
+  const dispatch = useDispatch();
+
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/products/${id}`)
+    fetch(`http://localhost:3000/api/products/${id}`, {
+      method: 'GET',
+      credentials: 'include', 
+    })
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -38,6 +46,15 @@ const ProductDetails = () => {
           <p className="mb-4">
             <strong>Description:</strong> {product.description}
           </p>
+          <button
+         onClick={(e) => {
+          e.preventDefault(); 
+          dispatch(addToCart(product));
+        }}
+          className="px-4 py-2 text-sm text-white bg-blue-400 rounded-lg shadow hover:bg-blue-600 transition"
+        >
+          Add to cart
+        </button>
         </div>
       </div>
     </div>

@@ -48,6 +48,7 @@ const EditProductModal = ({ product, onClose, onProductUpdated }) => {
       const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
         method: 'PUT',
         body: data,
+        credentials: 'include',
       });
 
       if (response.ok) {
