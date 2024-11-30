@@ -39,6 +39,7 @@ const AddProductModal = ({ onProductAdded }) => {
       const response = await fetch('http://localhost:3000/api/products', {
         method: 'POST',
         body: data, 
+        credentials: 'include', 
       });
 
       if (response.ok) {

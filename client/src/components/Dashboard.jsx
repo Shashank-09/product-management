@@ -12,18 +12,35 @@ const Dashboard = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/products')
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error(err));
+    fetch('http://localhost:3000/api/products', {
+      method: 'GET',
+      credentials: 'include', 
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Error: ${res.status} ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((err) => {
+        setError(err.message || 'Something went wrong');
+        console.error('Fetch error:', err);
+      });
   }, []);
+
 
   const handleDelete = async (id) => {
     const response = await fetch(`http://localhost:3000/api/products/${id}`, {
       method: 'DELETE',
+      credentials: 'include',
     });
 
     if (response.ok) {
+      console.log(products._id)
+      console.log(id)
       setProducts(products.filter((product) => product._id !== id)); 
     } else {
       console.error('Error deleting product');
@@ -52,11 +69,13 @@ const Dashboard = () => {
   return (
     <>
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl  font-bold mb-4">Product Dashboard</h1>
-      <div className="mb-4 flex gap-2">
-        <AddProduct onProductAdded={handleProductAdded} />
-        <Cart />
-      </div>
+    <div className="flex items-center justify-between mb-4">
+    <h1 className="text-2xl font-bold">Product Dashboard</h1>
+    <div className="flex gap-2">
+      <AddProduct onProductAdded={handleProductAdded} />
+      <Cart />
+    </div>
+  </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductCard
